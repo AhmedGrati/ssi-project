@@ -1,6 +1,7 @@
 from db_connector import DBConnector
-from user import User
 from passlib.hash import sha512_crypt
+from user import User
+
 
 class UserRepository:
     db_connector: DBConnector = None
@@ -20,7 +21,8 @@ class UserRepository:
                     break
         if table_exists is not True:
             cursor.execute(
-                "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255), email VARCHAR(255), password VARCHAR(255))")
+                "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255)"
+                ", email VARCHAR(255), password VARCHAR(255))")
 
     def add_user(self, first_name: str, last_name: str, email: str, password: str):
         if self.get_user_by_email(email=email) is None:
@@ -38,3 +40,10 @@ class UserRepository:
         cursor = self.db_connector.db_connection.cursor()
         cursor.execute(get_user_by_email_query, user_email)
         return cursor.fetchone()
+
+    def login(self, email: str, password: str):
+        result = self.get_user_by_email(email=email)
+        if result is None:
+            return False
+        user = User(query_result=result)
+        return sha512_crypt.verify(password, user.password)
