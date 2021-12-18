@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "823e5903fc60ed4456d4eb96ba58e3025853bc372290024344961c6a944dd939"
+            "sha256": "e38cb3fa4c1f9a55c05733dcc8621bba23a7566db5ec14e7d8673dcd9e5e60e3"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -166,19 +166,19 @@
             "markers": "python_version >= '3.5'",
             "version": "==3.19.1"
         },
-        "pybozocrack": {
-            "hashes": [
-                "sha256:6f0e742c227f49d764febb1dc04f0994e9e887c800a458c3fe51fa16b8faf9ac"
-            ],
-            "index": "pypi",
-            "version": "==3.0.2"
-        },
         "pycparser": {
             "hashes": [
                 "sha256:8ee45429555515e1f6b185e78100aea234072576aa43ab53aefcae078162fca9",
                 "sha256:e644fdec12f7872f86c58ff790da456218b10f863970249516d60a5eaca77206"
             ],
             "version": "==2.21"
+        },
+        "pycrypto": {
+            "hashes": [
+                "sha256:f2ce1e989b272cfcb677616763e0a2e7ec659effa67a88aa92b3a65528f60a3c"
+            ],
+            "index": "pypi",
+            "version": "==2.6.1"
         },
         "python-dotenv": {
             "hashes": [

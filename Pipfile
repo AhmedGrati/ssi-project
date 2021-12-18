@@ -9,6 +9,7 @@ passlib = "*"
 mysql-connector-python = "*"
 python-dotenv = "*"
 schema = "*"
+pycrypto = "*"
 
 [dev-packages]
 
