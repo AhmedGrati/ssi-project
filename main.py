@@ -2,6 +2,7 @@ import os
 from db_connector import DBConnector
 from repository import UserRepository
 import auth
+from phase3.menu import phase3Menu
 from dotenv import load_dotenv
 
 load_dotenv(".env")
@@ -15,7 +16,7 @@ if __name__ == '__main__':
         hostname=DB_HOSTNAME,
         user=DB_USER,
         password=DB_PASSWORD,
-        database=DB_DATABASE
+        database=DB_DATABASE,
     )
     user_repo = UserRepository(db_connector=conn)
     while user_choice != 4:
@@ -33,5 +34,4 @@ if __name__ == '__main__':
             print()
             print()
         elif user_choice == 3:
-            # TODO: Wadhah implements phase 3
-            print("PHASE 3")
+            phase3Menu()
