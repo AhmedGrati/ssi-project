@@ -4,6 +4,7 @@ from repository import UserRepository
 import auth
 from phase3.menu import phase3Menu
 from dotenv import load_dotenv
+import tarfile
 
 load_dotenv(".env")
 if __name__ == '__main__':

@@ -18,5 +18,5 @@ menu = {
 }
 
 
-def fernet_cli():
+def encode_cli():
     generic_cli(menu=menu)
