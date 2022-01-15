@@ -1,0 +1,3 @@
+[submodule "elgamal"]
+	path = elgamal
+	url = git@github.com:RyanRiddle/elgamal.git
