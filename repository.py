@@ -1,9 +1,10 @@
 import random
 
-from db_connector import DBConnector
 from passlib.hash import sha512_crypt
-from user import User
+
+from db_connector import DBConnector
 from email_service import EmailService
+from user import User
 
 
 class UserRepository:
@@ -27,7 +28,8 @@ class UserRepository:
         if table_exists is not True:
             cursor.execute(
                 "CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, first_name VARCHAR(255), last_name VARCHAR(255)"
-                ", email VARCHAR(255), password VARCHAR(255))")
+                ", email VARCHAR(255), password VARCHAR(255))"
+            )
 
     def add_user(self, first_name: str, last_name: str, email: str, password: str):
         if self.get_user_by_email(email=email) is None:
@@ -60,4 +62,3 @@ class UserRepository:
             if verification_code == random_number:
                 return True
             return False
-

@@ -1,6 +1,8 @@
-import re
 import getpass
+import re
+
 from repository import UserRepository
+
 """
     Email and password constraints:
        . The user email should follow this regex: first_name.last_name@insat.ucar.tn.
@@ -10,8 +12,12 @@ from repository import UserRepository
 
 
 def check_constraints(email: str, password: str, password_confirmation: str):
-    email_regex = r'\b[A-Za-z0-9]+\.[A-Za-z0-9]+@insat.ucar.tn\b'
-    if re.fullmatch(email_regex, email) and password == password_confirmation and len(password) > 6:
+    email_regex = r"\b[A-Za-z0-9]+\.[A-Za-z0-9]+@insat.ucar.tn\b"
+    if (
+        re.fullmatch(email_regex, email)
+        and password == password_confirmation
+        and len(password) > 6
+    ):
         return True
     return False
 
@@ -23,12 +29,14 @@ def check_constraints(email: str, password: str, password_confirmation: str):
 
 
 def extract_names(email: str):
-    first_name, lastname = email.split('@')[0].split('.')
+    first_name, lastname = email.split("@")[0].split(".")
     return first_name, lastname
 
 
 def sign_up(user_repo: UserRepository):
-    print("********************************* Registration **************************************")
+    print(
+        "********************************* Registration **************************************"
+    )
     constraints_verified = False
     email = None
     password = None
@@ -36,16 +44,13 @@ def sign_up(user_repo: UserRepository):
         email = str(input("Enter your email: "))
         password = getpass.getpass("Enter your password: ")
         password_confirmation = getpass.getpass("Enter your password confirmation: ")
-        constraints_verified = check_constraints(email=email,
-                                                 password=password,
-                                                 password_confirmation=password_confirmation)
+        constraints_verified = check_constraints(
+            email=email, password=password, password_confirmation=password_confirmation
+        )
     first_name, last_name = extract_names(email=email)
     try:
         user_repo.add_user(
-            first_name=first_name,
-            last_name=last_name,
-            email=email,
-            password=password
+            first_name=first_name, last_name=last_name, email=email, password=password
         )
     except:
         print("This user already exists please try another user!")
@@ -53,7 +58,9 @@ def sign_up(user_repo: UserRepository):
 
 
 def login(user_repo: UserRepository):
-    print("********************************* Login **************************************")
+    print(
+        "********************************* Login **************************************"
+    )
     email = None
     password = None
     while email is None and password is None:
@@ -65,5 +72,3 @@ def login(user_repo: UserRepository):
         print("Login Successfully!")
     else:
         print("Please verify your email and password and re-login!")
-
-

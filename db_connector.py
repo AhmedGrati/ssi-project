@@ -8,11 +8,8 @@ class DBConnector(object):
 
     def __init__(self, hostname, user, password, database):
         self.db_connection = mysql.connector.connect(
-            host=hostname,
-            user=user,
-            password=password,
-            database=database
+            host=hostname, user=user, password=password, database=database
         )
 
     def __str__(self):
-        return 'Database connection object'
+        return "Database connection object"

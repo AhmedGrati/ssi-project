@@ -9,11 +9,11 @@ def encode_bytes():
 def decode_bytes():
     message = input("Enter Message to be decoded from Bytes: ")
     word = bytes.fromhex(message).decode("utf-8")
-    print(f'Decoded Message:\n{word}\n')
+    print(f"Decoded Message:\n{word}\n")
 
 
 menu = {
-    "a": {"message":  "Enocde Message", "func": encode_bytes},
+    "a": {"message": "Enocde Message", "func": encode_bytes},
     "b": {"message": "Decode Message", "func": decode_bytes},
 }
 

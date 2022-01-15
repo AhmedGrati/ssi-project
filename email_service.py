@@ -10,7 +10,12 @@ def format_message(content: str, sender: str):
     Subject: %s
 
     %s
-    """ % (content, sender, subject, content)
+    """ % (
+        content,
+        sender,
+        subject,
+        content,
+    )
     return email_text
 
 
@@ -32,5 +37,8 @@ class EmailService:
             server.starttls()
             server.ehlo()
             server.login(self.sender_email, self.sender_password)
-            server.sendmail(self.sender_email, receiver_email, format_message(content=content,
-                                                                              sender=self.sender_email))
+            server.sendmail(
+                self.sender_email,
+                receiver_email,
+                format_message(content=content, sender=self.sender_email),
+            )
