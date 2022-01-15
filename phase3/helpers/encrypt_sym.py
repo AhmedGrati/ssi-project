@@ -12,7 +12,7 @@ def encrypt_des(key, message):
     des = DES.new(key.encode(), DES.MODE_ECB)
     padded_text = pad(message, 8)
     encrypted_text: bytes = des.encrypt(padded_text)
-    print(f"Encoded Message:\n{encrypted_text.hex()}\n")
+    print(f"Encrypted Message:\n{encrypted_text.hex()}\n")
 
 
 def encrypt_des_cli():
@@ -25,7 +25,7 @@ def encrypt_aes256(key, message):
     padded_text = pad(message, 16)
     cipher = AES.new(key.encode(), AES.MODE_ECB)
     ciphertext: bytes = cipher.encrypt(padded_text)
-    print(f"Decoded Message:\n{ciphertext.hex()}\n")
+    print(f"Encrypted Message:\n{ciphertext.hex()}\n")
 
 
 def encrypt_aes256_cli():
@@ -40,7 +40,7 @@ def decrypt_des_cli():
     des = DES.new(key.encode(), DES.MODE_ECB)
     decrypted_text: bytes = des.decrypt(bytes.fromhex(message))
     result = decrypted_text.decode("utf-8").strip()
-    print(f"Decoded Message:\n{result}\n")
+    print(f"Decrypted Message:\n{result}\n")
 
 
 def decrypt_aes256_cli():
@@ -49,7 +49,7 @@ def decrypt_aes256_cli():
     cipher = AES.new(key.encode(), AES.MODE_ECB)
     ciphertext: bytes = cipher.decrypt(bytes.fromhex(message))
     result = ciphertext.decode("utf-8").strip()
-    print(f"Encoded Message:\n{result}\n")
+    print(f"Decrypted Message:\n{result}\n")
 
 
 menu = {

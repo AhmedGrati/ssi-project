@@ -10,6 +10,7 @@ mysql-connector-python = "*"
 python-dotenv = "*"
 schema = "*"
 pycrypto = "*"
+rsa = "*"
 
 [dev-packages]
 
