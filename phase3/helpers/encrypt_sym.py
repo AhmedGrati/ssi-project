@@ -26,7 +26,7 @@ def encrypt_aes256():
 
 
 menu = {
-    "a": {"message":  "Encrypt Message DES", "func": encrypt_des_cli},
+    "a": {"message": "Encrypt Message DES", "func": encrypt_des_cli},
     "b": {"message": "Encrypt Message AES256", "func": encrypt_aes256},
 }
 

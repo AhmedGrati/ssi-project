@@ -4,6 +4,7 @@ from repository import UserRepository
 import auth
 from phase3.menu import phase3Menu
 from dotenv import load_dotenv
+from email_service import EmailService
 import tarfile
 
 load_dotenv(".env")
@@ -13,13 +14,16 @@ if __name__ == '__main__':
     DB_USER: str = os.environ.get("DB_USER")
     DB_PASSWORD: str = os.environ.get("DB_PASSWORD")
     DB_DATABASE: str = os.environ.get("DB_DATABASE")
+    EMAIL_LOGIN: str = os.environ.get('EMAIL_LOGIN')
+    EMAIL_PASSWORD: str = os.environ.get('EMAIL_PASSWORD')
     conn = DBConnector.Instance(
         hostname=DB_HOSTNAME,
         user=DB_USER,
         password=DB_PASSWORD,
         database=DB_DATABASE,
     )
-    user_repo = UserRepository(db_connector=conn)
+    email_service = EmailService(sender_email=EMAIL_LOGIN, sender_password=EMAIL_PASSWORD)
+    user_repo = UserRepository(db_connector=conn, email_service=email_service)
     while user_choice != 4:
         user_choice = int(input("Enter your choice: \n"
                                 "1. To register a new user.\n"

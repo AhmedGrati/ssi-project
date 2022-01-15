@@ -1,13 +1,18 @@
+import random
+
 from db_connector import DBConnector
 from passlib.hash import sha512_crypt
 from user import User
+from email_service import EmailService
 
 
 class UserRepository:
     db_connector: DBConnector = None
+    email_service: EmailService = None
 
-    def __init__(self, db_connector):
+    def __init__(self, db_connector, email_service):
         self.db_connector = db_connector
+        self.email_service = email_service
         self.create_table()
 
     def create_table(self):
@@ -43,7 +48,16 @@ class UserRepository:
 
     def login(self, email: str, password: str):
         result = self.get_user_by_email(email=email)
+        random_number = random.randint(100000, 999999)
         if result is None:
             return False
         user = User(query_result=result)
-        return sha512_crypt.verify(password, user.password)
+        pass_verification = sha512_crypt.verify(password, user.password)
+        if pass_verification is True:
+            content = f"Code: {random_number}"
+            self.email_service.send_email(receiver_email=user.email, content=content)
+            verification_code = int(input("Enter your verification code:"))
+            if verification_code == random_number:
+                return True
+            return False
+
