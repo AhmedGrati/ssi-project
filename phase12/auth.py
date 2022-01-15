@@ -1,7 +1,7 @@
 import getpass
 import re
 
-from repository import UserRepository
+from phase12.repository import UserRepository
 
 """
     Email and password constraints:

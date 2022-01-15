@@ -2,11 +2,11 @@ import os
 
 from dotenv import load_dotenv
 
-import auth
-from db_connector import DBConnector
-from email_service import EmailService
+from phase12 import auth
+from phase12.db_connector import DBConnector
+from phase12.email_service import EmailService
 from phase3.menu import phase3Menu
-from repository import UserRepository
+from phase12.repository import UserRepository
 
 load_dotenv(".env")
 if __name__ == "__main__":

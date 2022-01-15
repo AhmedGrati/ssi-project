@@ -1,5 +1,5 @@
-from singleton import Singleton
 import mysql.connector
+from phase12.singleton import Singleton
 
 
 @Singleton

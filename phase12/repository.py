@@ -2,9 +2,9 @@ import random
 
 from passlib.hash import sha512_crypt
 
-from db_connector import DBConnector
-from email_service import EmailService
-from user import User
+from phase12.db_connector import DBConnector
+from phase12.email_service import EmailService
+from phase12.user import User
 
 
 class UserRepository:
