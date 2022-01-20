@@ -11,6 +11,7 @@ python-dotenv = "*"
 schema = "*"
 pycrypto = "*"
 rsa = "*"
+termcolor = "*"
 
 [dev-packages]
 
