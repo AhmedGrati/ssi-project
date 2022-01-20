@@ -69,26 +69,21 @@ class Client:
         while True:
             message = self.s.recv(1024).decode()
             if message:
-                key = secret_key  # The secret key to use for AES decryption
-                decrypt_message = json.loads(message)  # Load the json formatted message
-                # Take out the initialization vector and b64 decode it
-                cipherText = b64decode(
-                    decrypt_message["ciphertext"]
-                )  # Take out the ciphertext and b64 decode it
+                key = secret_key
+                decrypt_message = json.loads(message)
+                cipherText = b64decode(decrypt_message["ciphertext"])
                 cipher = AES.new(
                     key,
                     AES.MODE_ECB,
-                )  # Create and AES object, parameters: [secret_key], [counter feedback mode], [initialization vector]
-                msg = cipher.decrypt(
-                    cipherText
-                )  # Use the object to decrypt the ciphertext
+                )
+                msg = cipher.decrypt(cipherText)
                 current_time = datetime.datetime.now()
                 print(
                     colored(
                         current_time.strftime("%Y-%m-%d %H:%M:%S ") + msg.decode(),
                         "green",
                     )
-                )  # It produces a byte encoded output so you have to decode it to display as string
+                )
             else:
                 print(colored("[!] Lost the connection to the server", "red"))
                 print(colored("[!] Closing down the connection", "red"))
@@ -103,9 +98,7 @@ class Client:
                 break
             else:
                 key = secret_key
-                cipher = AES.new(
-                    key, AES.MODE_ECB
-                )  # Initialize AES object for encryption, parameters: [key], [counter feedback mode]
+                cipher = AES.new(key, AES.MODE_ECB)
                 message_to_encrypt = self.username + ": " + message
 
                 message_to_encrypt = pad(message_to_encrypt, 16)
