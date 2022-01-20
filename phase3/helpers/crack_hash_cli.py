@@ -11,9 +11,8 @@ def get_password_list_generator():
 
 def crack_md5_cli():
     message = input("Enter Message to be cracked MD5: ")
-
     for i in get_password_list_generator():
-        if hashlib.md5(i.encode()).hexdigest() == message:
+        if hashlib.md5(i.strip().encode()).hexdigest() == message:
             print(f"\ncracked Message:\n{i}\n")
             return
 
@@ -23,7 +22,7 @@ def crack_md5_cli():
 def crack_sh1_cli():
     message = input("Enter Message to be cracked SH1: ")
     for i in get_password_list_generator():
-        if hashlib.sha1(i.encode()).hexdigest() == message:
+        if hashlib.sha1(i.strip().encode()).hexdigest() == message:
             print(f"\ncracked Message:\n{i}\n")
             return
 
@@ -33,7 +32,7 @@ def crack_sh1_cli():
 def crack_sha256_cli():
     message = input("Enter Message to be cracked SH256")
     for i in get_password_list_generator():
-        if hashlib.sha256(i.encode()).hexdigest() == message:
+        if hashlib.sha256(i.strip().encode()).hexdigest() == message:
             print(f"\ncracked Message:\n{i}\n")
             return
 
